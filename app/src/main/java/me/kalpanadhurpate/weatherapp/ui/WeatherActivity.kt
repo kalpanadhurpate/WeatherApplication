@@ -2,33 +2,25 @@ package me.kalpanadhurpate.weatherapp.ui
 
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.transition.Visibility
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
-import me.kalpanadhurpate.weatherapp.WeatherViewModel
 import me.kalpanadhurpate.weatherapp.data.model.Latlon
 import me.kalpanadhurpate.weatherapp.databinding.ActivityMainBinding
 import me.kalpanadhurpate.weatherapp.utils.UiState
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class WeatherActivity : AppCompatActivity() {
 
     private lateinit var viewBinding: ActivityMainBinding
     private lateinit var weatherViewModel: WeatherViewModel
@@ -108,7 +100,7 @@ class MainActivity : AppCompatActivity() {
                         //  viewBinding.progressBar.visibility = View.GONE
                         println("Error is ${it.message}")
                         Toast.makeText(
-                            this@MainActivity,
+                            this@WeatherActivity,
                             it.message,
                             Toast.LENGTH_SHORT
                         ).show()
@@ -139,7 +131,7 @@ class MainActivity : AppCompatActivity() {
                             //Handle Error
                             println("Error is ${it.message}")
                             Toast.makeText(
-                                this@MainActivity,
+                                this@WeatherActivity,
                                 it.message,
                                 Toast.LENGTH_SHORT
                             ).show()

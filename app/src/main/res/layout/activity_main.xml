@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:elevation="8dp"
     android:orientation="vertical"
-    tools:context=".ui.MainActivity">
+    tools:context=".ui.WeatherActivity">
 
 
     <androidx.cardview.widget.CardView
@@ -86,7 +86,7 @@
                 android:id="@+id/tempTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Temp" />
+                android:text="@string/temp" />
 
             <TextView
                 android:id="@+id/tempValue"
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignEnd="@id/tempTextView"
                 android:layout_alignParentEnd="true"
-                android:text="120" />
+                android:text="@string/_120" />
 
         </RelativeLayout>
 
@@ -115,7 +115,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignEnd="@id/humidityTextView"
                 android:layout_alignParentEnd="true"
-                android:text="56" />
+                android:text="@string/_56" />
 
         </RelativeLayout>
 

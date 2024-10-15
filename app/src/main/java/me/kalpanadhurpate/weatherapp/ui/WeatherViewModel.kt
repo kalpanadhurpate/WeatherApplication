@@ -1,4 +1,4 @@
-package me.kalpanadhurpate.weatherapp
+package me.kalpanadhurpate.weatherapp.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,11 +9,11 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.debounce
-import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
+import me.kalpanadhurpate.weatherapp.data.repository.WeatherRepository
 import me.kalpanadhurpate.weatherapp.data.model.Latlon
 import me.kalpanadhurpate.weatherapp.data.model.WeatherResponse
 import me.kalpanadhurpate.weatherapp.utils.UiState

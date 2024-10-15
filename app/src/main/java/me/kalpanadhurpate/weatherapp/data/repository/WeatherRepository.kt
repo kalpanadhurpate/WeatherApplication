@@ -1,4 +1,4 @@
-package me.kalpanadhurpate.weatherapp
+package me.kalpanadhurpate.weatherapp.data.repository
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -6,7 +6,6 @@ import me.kalpanadhurpate.weatherapp.data.api.NetworkService
 import me.kalpanadhurpate.weatherapp.data.model.Latlon
 import me.kalpanadhurpate.weatherapp.data.model.WeatherResponse
 import me.kalpanadhurpate.weatherapp.di.WeatherApiKey
-import retrofit2.Response
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -17,7 +16,7 @@ class WeatherRepository @Inject constructor(
 ) {
 
     fun getLatLon(city: String): Flow<List<Latlon>> {
-        val limit = 5;
+        val limit = 5
         return flow {
             val response = networkService.getLatLong(city, apiKey, limit)
             println("WeatherRepository ${response.size}")
