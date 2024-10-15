@@ -4,4 +4,7 @@
     <string name="humidity">Humidity</string>
     <string name="MainValue">Clouds\n</string>
     <string name="image">Image</string>
+    <string name="temp">Temp</string>
+    <string name="_120">120</string>
+    <string name="_56">56</string>
 </resources>
