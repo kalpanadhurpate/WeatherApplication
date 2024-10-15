@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignEnd="@id/tempTextView"
                 android:layout_alignParentEnd="true"
-                android:text="@string/_120" />
+                android:text="@string/temp_value" />
 
         </RelativeLayout>
 
@@ -115,7 +115,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignEnd="@id/humidityTextView"
                 android:layout_alignParentEnd="true"
-                android:text="@string/_56" />
+                android:text="@string/humidity_value" />
 
         </RelativeLayout>
 
