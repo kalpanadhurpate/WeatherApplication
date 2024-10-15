@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <string name="nameOfcity">City Name</string>
+    <string name="humidity">Humidity</string>
+    <string name="MainValue">Clouds\n</string>
+    <string name="image">Image</string>
+</resources>
