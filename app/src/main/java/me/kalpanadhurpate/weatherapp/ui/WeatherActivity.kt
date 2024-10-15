@@ -1,7 +1,6 @@
 package me.kalpanadhurpate.weatherapp.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -60,22 +59,19 @@ class WeatherActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         adapter.onItemClick = {
             weatherViewModel.getWeatherByLatLon(it.lat!!, it.lon!!)
-              adapter.clearData()
+            adapter.clearData()
         }
     }
 
     private fun initListener() {
         viewBinding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                Log.d("main activity", "onQueryTextChange")
                 query?.let { weatherViewModel.getLatLon(it) }
-                Log.d("main activity", "onQueryTextSubmit: $query")
                 return true
 
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                Log.d("main activity", "onQueryTextChange")
                 return true
             }
         })
@@ -87,18 +83,13 @@ class WeatherActivity : AppCompatActivity() {
             weatherViewModel.uiState.collect {
                 when (it) {
                     is UiState.Success -> {
-                        println("result is:${it.data.size}")
                         renderList(it.data)
                     }
 
                     is UiState.Loading -> {
-                        //   viewBinding.progressBar.visibility = View.VISIBLE
                     }
 
                     is UiState.Error -> {
-                        //Handle Error
-                        //  viewBinding.progressBar.visibility = View.GONE
-                        println("Error is ${it.message}")
                         Toast.makeText(
                             this@WeatherActivity,
                             it.message,
@@ -116,20 +107,17 @@ class WeatherActivity : AppCompatActivity() {
                 weatherViewModel.weatherInfo.collect {
                     when (it) {
                         is UiState.Success -> {
-                            viewBinding.mainTextView.text=it.data.weather[0].main
+                            viewBinding.mainTextView.text = it.data.weather[0].main
                             viewBinding.tempValue.text = it.data.main.temp.toString()
-                            viewBinding.humidityValue.text=it.data.main.humidity.toString()
+                            viewBinding.humidityValue.text = it.data.main.humidity.toString()
                             viewBinding.nameOfCity.text = it.data.name
                             Glide.with(viewBinding.ImageView.context)
-                                .load(
-                                "https://openweathermap.org/img/wn/10d@2x.png")
+                                .load("https://openweathermap.org/img/wn/10d@2x.png")
                                 .into(viewBinding.ImageView)
-
                         }
 
                         is UiState.Error -> {
                             //Handle Error
-                            println("Error is ${it.message}")
                             Toast.makeText(
                                 this@WeatherActivity,
                                 it.message,
@@ -138,12 +126,9 @@ class WeatherActivity : AppCompatActivity() {
                         }
 
                         is UiState.Loading -> {
-                            //   viewBinding.progressBar.visibility = View.VISIBLE
                         }
                     }
                 }
-
-
             }
         }
     }

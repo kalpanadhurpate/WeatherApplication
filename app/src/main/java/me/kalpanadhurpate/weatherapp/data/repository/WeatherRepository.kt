@@ -19,7 +19,6 @@ class WeatherRepository @Inject constructor(
         val limit = 5
         return flow {
             val response = networkService.getLatLong(city, apiKey, limit)
-            println("WeatherRepository ${response.size}")
             emit(response)
         }
     }

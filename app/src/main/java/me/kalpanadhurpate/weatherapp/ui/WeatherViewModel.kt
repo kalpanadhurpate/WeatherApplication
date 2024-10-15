@@ -47,7 +47,6 @@ class WeatherViewModel @Inject constructor(private val repository: WeatherReposi
                 }
                // .distinctUntilChanged()
                 .flatMapLatest {
-                    println("In flatMapLatest")
                     repository.getLatLon(city)
                 }
                 .flowOn(Dispatchers.Default)
@@ -55,7 +54,6 @@ class WeatherViewModel @Inject constructor(private val repository: WeatherReposi
                     _uiState.value = UiState.Error(e.toString())
                 }
                 .collect { it ->
-                    println("size is ${it.size}")
                     _uiState.value = UiState.Success(it)
                 }
 
@@ -64,14 +62,12 @@ class WeatherViewModel @Inject constructor(private val repository: WeatherReposi
 
     fun getWeatherByLatLon(lat: Double, lon: Double) {
         viewModelScope.launch {
-           // _weatherInfo.value = UiState.Loading
             repository.getWeatherForLatLon(lat, lon)
                 .flowOn(Dispatchers.Default)
                 .catch { e ->
                     _weatherInfo.value = UiState.Error(e.toString())
                 }
                 .collect {
-                    println("Resultt is ${it}")
                     _weatherInfo.value = UiState.Success(it)
 
                 }
